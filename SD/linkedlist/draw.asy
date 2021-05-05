@@ -1,7 +1,7 @@
 include"biblio.asy";
-pushList();
-//popList();
+//pushList();
+popList();
 //pushFirst();
 //popFirst();
 //pushIndex(3);
-//popIndex(3);
+//popIndex(2);
