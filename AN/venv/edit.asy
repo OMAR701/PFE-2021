@@ -1,3 +1,3 @@
 real f(real x) {
-return x*x;
+return x*x-2;
 }

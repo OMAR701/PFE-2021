@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/aminelaaguidi/Documents/GitHub/PFE-2021/AN/venv"
+VIRTUAL_ENV="/home/aminelaaguidi/PycharmProjects/an/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -1,7 +1,7 @@
-//include 'edit.asy';
+include 'edit.asy';
 import graph;
 import contour;
-
+size(10cm);
 // on évite les valeurs 
 void mygraph(int a,int b){
 	usepackage("mathrsfs");
@@ -19,8 +19,14 @@ void mygraph(int a,int b){
 //label(string(v),(0,0));
 //dot((30,f(30)));
  // on coupe ce qui dépasse
-/*real decho(real a,real b,int nmax,real err=0.001){
-	path c1=graph(f,0,3); 
+real decho(real a,real b,int nmax,real err=0.001){
+    usepackage("mathrsfs");
+	unitsize(x=1cm,y=1cm);
+	transform ec=scale(.8);
+	xaxis(ec*"$x$",Ticks(ec*Label(), NoZero), Arrow(2mm));
+	yaxis(ec*"$y$", Ticks(ec*Label(), NoZero), Arrow(2mm));
+	labelx(ec*"$O$",0,SW);
+	path c1=graph(f,a,b);
 	if(f(a)==0)
 		return a;
 	else if(f(b)==0)
@@ -55,17 +61,21 @@ void mygraph(int a,int b){
 				a=x;
 			else
 				b=x;
-			if(n<6 || n==nmax){
-				dot((x,f(x)),blue);
-				if(f(x)<0)
-					label("x"+string(n-1),(x,f(x)),filltype=Fill(lightyellow),S);
-				else{
-					label("x"+string(n-1),(x,f(x)),filltype=Fill(lightyellow),N);}
-				draw((x,0)--(x,f(x)),bp+dashed+green);
+			draw((x,0)--(x,f(x)),bp+dashed+green);
+			dot((x,f(x)),blue);
+			if( n==nmax){
+                dot((x,f(x)),black);
+				//if(f(x)<0){
+				//	label("x"+string(n-1),(x,f(x)),filltype=Fill(lightyellow),S);
+				//}else{
+				//	label("x"+string(n-1),(x,f(x)),filltype=Fill(lightyellow),N);}
 			}
 		}
 		return x;
 		
 	}
+	xlimits(-10,10,Crop);
+	ylimits(-10,10,Crop);
 }
-decho(0,3,12);*/
+decho(0,3,12);
+
