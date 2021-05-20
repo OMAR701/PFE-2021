@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6965d653-d086-425f-8473-19a96e766ade" name="Default Changelist" comment="" />
+    <list default="true" id="41653f35-ad33-4ede-9fcc-11cff495dc9d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
-  <component name="ProjectId" id="1soKHPmcuL4hxz1CpGP6H2T29Cw" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1sky82RejwES4uMyyIqWMcULALW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -19,31 +26,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Newtonpython" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Newtonpython" />
-      <recent name="$PROJECT_DIR$/newtontab" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/newtontab" />
-    </key>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../faussposition.asy" />
   </component>
   <component name="RunManager" selected="Python.pynew">
-    <configuration name="newtontab" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="AN" />
+    <configuration name="Newtonpython" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Newtonpython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="/usr/bin/python3.8" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/newtontab" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -52,19 +50,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pynew (1)" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="AN" />
+    <configuration name="executetabelnewton" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Newtonpython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Newtonpython" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Newtonpython/pynew.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/executetabelnewton.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -74,18 +72,18 @@
       <method v="2" />
     </configuration>
     <configuration name="pynew" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="AN" />
+      <module name="Newtonpython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/newtontab" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/newtontab/pynew.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pynew.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -95,24 +93,25 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.pynew (1)" />
-      <item itemvalue="Python.newtontab" />
+      <item itemvalue="Python.Newtonpython" />
+      <item itemvalue="Python.executetabelnewton" />
       <item itemvalue="Python.pynew" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.pynew" />
+        <item itemvalue="Python.executetabelnewton" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6965d653-d086-425f-8473-19a96e766ade" name="Default Changelist" comment="" />
-      <created>1621533413766</created>
+      <changelist id="41653f35-ad33-4ede-9fcc-11cff495dc9d" name="Default Changelist" comment="" />
+      <created>1621430719097</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1621533413766</updated>
+      <updated>1621430719097</updated>
     </task>
     <servers />
   </component>
