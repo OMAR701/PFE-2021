@@ -1,13 +1,15 @@
 from asymptote import *
 import os
 
-
-def writefunct(fct):
-    filr = open(__file__[:-8]+"edit.asy", "r")
+def writefunct(nbr):
+    nbr=0
+    filr = open(__file__[:-8]+"edited.asy", "r")
     lignes = filr.readlines()
-    filr = open(__file__[:-8]+"edit.asy", "r")
     filr.close()
-    lignes[1] = "return " + str(fct) + ";\n"
+    lignes[1] = "int nbr ="+ str(nbr) + ";\n"
+    lignes[2] ="string[] names= {"
+    for i in range(str(nbr)):
+        +str(i)+","
     flew = open(__file__[:-8]+"edit.asy", "w")
     flew.writelines(lignes)
     flew.close()
@@ -32,8 +34,3 @@ c = input()
 writefunct(fct=x)
 writedecho(a,b,c)
 os.system('cd '+__file__[:-8]+' && asy -f pdf -V an.asy')
-
-#g = asy()
-#g.send("include '"+__file__[:-8]+"edit.asy'")
-#g.send("include '"+__file__[:-8]+"an.asy'")
-#g.send("decho("+str(a)+","+str(b)+","+str(c)+");")

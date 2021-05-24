@@ -3,5 +3,5 @@ include"biblio.asy";
 //popList();
 //pushFirst();
 //popFirst();
-pushIndex(2);
+//pushIndex(2);
 //popIndex(1);

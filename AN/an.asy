@@ -47,7 +47,7 @@ draw(c1,red+bp);
 			else
 				n=n+1;
 			if(f(a)*f(x)>0)
-				a=x;
+				a=x;<
 			else
 				b=x;
 			if(n<6 || n==nmax){

@@ -2,7 +2,7 @@ size(10cm);
 import graph;
 import contour;
 usepackage("mathrsfs");
-real v=0.000075426843851566;
+real v=0.0000754268438515⁾66;
 real t=v*10000;
 pair vp=(2,0.5);
 
