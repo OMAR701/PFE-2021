@@ -5,7 +5,6 @@ import os
 def writefunct(fct):
     filr = open(__file__[:-8]+"edit.asy", "r")
     lignes = filr.readlines()
-    filr = open(__file__[:-8]+"edit.asy", "r")
     filr.close()
     lignes[1] = "return " + str(fct) + ";\n"
     flew = open(__file__[:-8]+"edit.asy", "w")
@@ -16,35 +15,37 @@ def writedecho(a,b,c):
     filr = open(__file__[:-8] + "an.asy", "r")
     lignes = filr.readlines()
     filr.close()
-    lignes[79] = "decho("+str(a)+","+str(b)+","+str(c)+");\n"
+    lignes[42] = "pointfixe(g,"+str(a)+","+str(b)+","+str(c)+");\n"
     flew = open(__file__[:-8] + "an.asy", "w")
     flew.writelines(lignes)
     flew.close()
 def writedecho2(a,b,c):
-    filr = open(__file__[:-8] + "dechotab.asy", "r")
+    filr = open(__file__[:-8] + "pointfixe.asy", "r")
     lignes = filr.readlines()
     filr.close()
-    lignes[73] = "decho(" + str(a) + "," + str(b) + "," + str(c) + ");\n"
-    flew = open(__file__[:-8] + "dechotab.asy", "w")
+    lignes[56] = "pointfixe(g," + str(a) + "," + str(b) + "," + str(c) + ");\n"
+    flew = open(__file__[:-8] + "pointfixe.asy", "w")
     flew.writelines(lignes)
     flew.close()
 print("entrer la fonction : ")
 print(__file__)
 x = str(input())
 print(x)
-print("entrer a et b ")
+print("entrer x0 ")
 a = input()
-b = input()
+
 print("nombre d'ietation")
 c = input()
+print("Entrer le taux d'erreur")
+b = input()
 writefunct(fct=x)
-writedecho(a,b,c)
+writedecho(a,c,b)
 os.system('cd '+__file__[:-8]+' && asy -f pdf -V an.asy')
-print("do you want the tabel of iterations")
+print("do you want the tabel")
 choix = input()
 if choix=="yes":
-   writedecho2(a,b,c)
-   os.system('cd ' + __file__[:-8] + ' && asy -f pdf -V dechotab.asy')
+    writedecho2(c,b,a)
+    os.system('cd ' + __file__[:-8] + ' && asy -f pdf -V pointfixe.asy')
 else :
     print("THX")
 #g = asy()

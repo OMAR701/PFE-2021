@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="e8ee08cb-10b2-457a-b0ec-af1e08f007c3" name="Default Changelist" comment="" />
-=======
-    <list default="true" id="f43df251-c5f9-433e-a89f-2e9fb35c6058" name="Default Changelist" comment="" />
->>>>>>> aff8e89455c578c6efc84a59e2cbf95e73314648
+    <list default="true" id="9c79a619-196a-44f2-897e-ebbcdc9e49a1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,11 +10,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-<<<<<<< HEAD
-  <component name="ProjectId" id="1sgaExhxESh0j3xK6vMTydeTCOR" />
-=======
-  <component name="ProjectId" id="1snAEIFVxR5BkAyCzisFQFvcKnL" />
->>>>>>> aff8e89455c578c6efc84a59e2cbf95e73314648
+  <component name="ProjectId" id="1soToeq1tZpeX6F3geDUwqaGGtS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,52 +19,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-<<<<<<< HEAD
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
-  </component>
-  <component name="RunManager">
-    <configuration name="testing" type="PythonConfigurationType" factoryName="Python">
-=======
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../fausse" />
   </component>
   <component name="RunManager" selected="Python.tesst">
-    <configuration name="tesst" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
->>>>>>> aff8e89455c578c6efc84a59e2cbf95e73314648
-      <module name="venv" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-<<<<<<< HEAD
-      <option name="SDK_HOME" value="$USER_HOME$/PycharmProjects/pythonProject/venv/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-=======
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
->>>>>>> aff8e89455c578c6efc84a59e2cbf95e73314648
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tesst.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-<<<<<<< HEAD
-=======
-    <configuration name="venv" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="venv" />
+    <configuration name="poinfixelast" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="poinfixelast" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -92,8 +43,8 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="venv" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="venv" />
+    <configuration name="poinfixelast" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="poinfixelast" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -113,50 +64,46 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="tesst" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="poinfixelast" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tesst.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.venv" />
+      <item itemvalue="Python.poinfixelast" />
       <item itemvalue="Python.tesst" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.tesst" />
-        <item itemvalue="Python.venv" />
       </list>
     </recent_temporary>
->>>>>>> aff8e89455c578c6efc84a59e2cbf95e73314648
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-      <changelist id="e8ee08cb-10b2-457a-b0ec-af1e08f007c3" name="Default Changelist" comment="" />
-      <created>1621296578945</created>
+      <changelist id="9c79a619-196a-44f2-897e-ebbcdc9e49a1" name="Default Changelist" comment="" />
+      <created>1621538119595</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1621296578945</updated>
+      <updated>1621538119595</updated>
     </task>
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-=======
-      <changelist id="f43df251-c5f9-433e-a89f-2e9fb35c6058" name="Default Changelist" comment="" />
-      <created>1621497867264</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1621497867264</updated>
-    </task>
-    <servers />
-  </component>
->>>>>>> aff8e89455c578c6efc84a59e2cbf95e73314648
 </project>

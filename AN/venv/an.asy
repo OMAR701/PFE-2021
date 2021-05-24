@@ -77,5 +77,9 @@ real decho(real a,real b,int nmax,real err=0.001){
 	xlimits(-10,10,Crop);
 	ylimits(-10,10,Crop);
 }
+<<<<<<< HEAD
 decho(1,3,12);
+=======
+decho(1,3,9);
+>>>>>>> aff8e89455c578c6efc84a59e2cbf95e73314648
 
