@@ -2,10 +2,8 @@ from asymptote import*
 import os
 
 def writeNoeud(Noeud1):
-    filr = open("including.asy", "r")
-    lignes = filr.readlines()
-    filr.close()
-    lignes[0] = "TreeNode "+str(Noeud1)+" = makeNode("+str('"')+str(Noeud1)+str('"')+");\n"
+    lignes = []
+    lignes.insert(0,"TreeNode "+str(Noeud1)+" = makeNode("+str('"')+str(Noeud1)+str('"')+");\n")
     flew = open("including.asy", "w")
     flew.writelines(lignes)
     flew.close()
@@ -26,7 +24,7 @@ def writeanyNoeud(Noeud1,i,father):
     filr = open("including.asy", "r")
     lignes = filr.readlines()
     filr.close()
-    lignes[i] = "TreeNode "+str(Noeud1)+" = makeNode("+str(father)+","+str('"')+str(Noeud1)+str('"')+");\n"
+    lignes.append("TreeNode "+str(Noeud1)+" = makeNode("+str(father)+","+str('"')+str(Noeud1)+str('"')+");\n")
     flew = open("including.asy", "w")
     flew.writelines(lignes)
     flew.close()
@@ -35,7 +33,7 @@ def drawing(c,i):
     filr = open("including.asy", "r")
     lignes = filr.readlines()
     filr.close()
-    lignes[i] = "draw("+str(c)+",(0,0));"
+    lignes.append("draw("+str(c)+",(0,0));")
     flew = open("including.asy", "w")
     flew.writelines(lignes)
     flew.close()
@@ -45,7 +43,7 @@ stop = "yes"
 i=0
 while stop == "yes":
     if i==0:
-       print("Enter the value")
+       print("Enter the tete")
        c = str(input())
        writeNoeud(c)
        i=i+1

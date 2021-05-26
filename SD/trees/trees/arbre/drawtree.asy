@@ -1,9 +1,9 @@
 // A simple tree drawing module contributed by adarovsky
 // See example treetest.asy
 
-real treeNodeStep = 0.5cm;
+real treeNodeStep = 0.1cm;
 real treeLevelStep = 1cm;
-real treeMinNodeWidth = 2cm;
+real treeMinNodeWidth = 0.5cm;
 
 struct TreeNode {
   TreeNode parent;
