@@ -1,3 +1,2 @@
-include"bibliopile.asy";
-  //pushList();
-  popList();
+include'bibliopile.asy';
+popList();

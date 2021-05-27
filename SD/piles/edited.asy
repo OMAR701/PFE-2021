@@ -1,33 +1,33 @@
-int nbr=4;
-string[] names={"x","y","s","z"};
+int nbr=2;
+string[] names={"a","b"};
 struct mystruct{
-int  x;int  y;string  s;int  z;
+int   a;int   b;
 }
 void fileWrite(mystruct[] m){
 	file f=output("testing.txt");
-int[]x;int[]y;string[]s;int[]z;
+int []a;int []b;
 	for(int i=0;i<m.length;++i){
-x[i]=m[i].x;y[i]=m[i].y;s[i]=m[i].s;z[i]=m[i].z;
+a[i]=m[i].a;b[i]=m[i].b;
 	}
 	int[] length={m.length};
 	write(f,length);write(f);
-write(f,x);write(f,y);write(f,s);write(f,z);
+write(f,a);write(f,b);
 }
 mystruct[] fileRead(){
 	file f=input("testing.txt");
 	int dim=f.dimension(1);
 	mystruct[] m;
-int[]x;int[]y;string[]s;int[]z;
-for(int i=0;i<dim;++i){x[i]=f.line();}for(int i=0;i<dim;++i){y[i]=f.line();}for(int i=0;i<dim;++i){s[i]=f.line();}for(int i=0;i<dim;++i){z[i]=f.line();}
+int []a;int []b;
+for(int i=0;i<dim;++i){a[i]=f.line();}for(int i=0;i<dim;++i){b[i]=f.line();}
 	for(int i=0;i<dim;++i){
 		mystruct t;
-t.x=x[i];t.y=y[i];t.s=s[i];t.z=z[i];
+t.a=a[i];t.b=b[i];
 		m.push(t);
 	}
 	return m;
 }
 string[] mystructTostring(mystruct s){
 	string[] t;
-t[0]=(string)s.x;t[1]=(string)s.y;t[2]=(string)s.s;t[3]=(string)s.z;
+t[0]=(string)s.a;t[1]=(string)s.b;
 	return t;
 }
