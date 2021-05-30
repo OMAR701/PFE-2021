@@ -3,9 +3,15 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import os
+#import subprocess
+import subprocess
+import time
+#from multiprocessing import Process
+from multiprocessing import Process
 from tkinter import *
 from tkinter import filedialog
 from skimage import io
+from subprocess import Popen
 
 def writestruct(nbr, names, types):
     filer = open("edited.asy", "r")
@@ -59,8 +65,33 @@ def stack(names, types, values):
     draw = ["include'bibliopile.asy';" + "\n","settings.outformat='png';settings.render=2;\n", "pushList();" + "\n"]
     filew.writelines(draw)
     filew.close()
-    os.system('"C:/Program Files/asymptote/asy.exe" -noV ' + __file__[:-7] + 'draw.asy')
-
+    drawP = __file__[:-7] +"draw.asy"
+    asy = '"C:/"Program Files"/asymptote/asy.exe"'
+    pyyy = 'c:/"program files"/python39/python.exe'
+    #def run_batfile():
+        #subprocess.call(['"C:/Program Files/asymptote/asy.exe"','-noV',__file__[:-7] + "draw.asy"])
+    subprocess.Popen([pyyy,"test.py"])
+    #subprocess.run('"C:/Program Files/asymptote/asy.exe" -noV '+__file__[:-7] + "draw.asy")
+    #Process(target=run_batfile).start()
+    #os.spawnl(os.P_NOWAIT,'C:/Program Files/asymptote/asy.exe',*["-noV ","draw.asy"])
+    max = 1
+    start = time.time()
+    while True:
+        ### Do other stuff, it won't be blocked
+        time.sleep(0.1)
+        ### This will be updated every loop
+        #remaining = max + start - time.time()
+        ### Countdown finished, ending loop
+        if os.path.exists("draw.png"):
+            break
+    while True:
+        ### Do other stuff, it won't be blocked
+        time.sleep(0.1)
+        ### This will be updated every loop
+        remaining = max + start - time.time()
+        ### Countdown finished, ending loop
+        if remaining <=0:
+            break
 def stackpop():
     if os.path.exists("draw.png"):
         os.remove("draw.png")
@@ -85,6 +116,7 @@ anImg = PhotoImage(file="an.png")
 sdImg = PhotoImage(file="sd.png")
 bgA = PhotoImage(file="bgA.png")
 logo = PhotoImage(file="logo.png")
+loadgif = PhotoImage(file="loadgif.gif", format="gif")
 label = Label(mainFrame, image=bgA)
 label.place(x=0, y=0)
 
@@ -227,6 +259,18 @@ pre = PhotoImage(file="pre.png")
 empl = PhotoImage(file="empiler.png")
 depl = PhotoImage(file="depiler.png")
 down = PhotoImage(file="down.png")
+loadgift = [PhotoImage(file="loadgif.gif",format=f"gif -index {i}") for i in range(8)]
+count = 0
+anim = None
+def animation(count):
+    global anim
+    im2 = loadgift[count]
+
+    labelGif.configure(image=im2)
+    count += 1
+    if count == 8:
+        count = 0
+    anim = rightFrame[6].after(50,lambda :animation(count))
 leftFrame=[]
 home=[]
 rightFrame=[]
@@ -322,14 +366,16 @@ pileLabels = []
 pileButtons = []
 pileLabel = Label(rightFrame[6], text="Piles :", bg="#21222d", font=('Arial bold', 30), fg="white")
 pileLabel.place(x=200, y=20)
-def empilerClick():
+def empilerClick(count):
+    labelGif.place(x=100, y=450)
+    animation(count)
     values = []
     for i in range(len(types)):
         values.append(str(pileButtons[i].get()))
     stack(names, types, values)
     pileResult.configure(file="draw.png")
     labelP.configure(image=pileResult)
-
+   #labelGif.place_forget()
 def depilerClick():
     stackpop()
     pileResult.configure(file="draw.png")
@@ -340,7 +386,7 @@ def file_save():
     io.imsave(str(fpath),img)
 
 pileResult = PhotoImage()
-empiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=empl, width=150, height=50, bd=0, compound="c",command=empilerClick)
+empiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=empl, width=150, height=50, bd=0, compound="c",command=lambda :empilerClick(count))
 empiler.place(x=100, y=300)
 depiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=depl, width=150, height=50, bd=0, compound="c",command=depilerClick)
 depiler.place(x=300, y=300)
@@ -349,6 +395,7 @@ showFrame.place(x=500,y=500,anchor=SW)
 downShow = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=down, width=200, height=70, bd=0, compound="c",command=file_save)
 downShow.place(x=640, y=515)
 labelP = Label(showFrame,image=pileResult)
+labelGif = Label(rightFrame[6],image=loadgif)
 labelP.pack(side=BOTTOM)
 # _______________pdf_______________________
 

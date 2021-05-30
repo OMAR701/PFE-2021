@@ -2,7 +2,7 @@
 include"edited.asy";
 mystruct t;
 int[] nbrchar;
-t.g=1;t.gg=1;t.ggg=1;
+t.q=5;
 string[][] mystructToMatrice(mystruct s[]){
 	string[][] mat;
 	for(int i=0;i<s.length;++i){
