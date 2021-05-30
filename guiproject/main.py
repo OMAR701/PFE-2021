@@ -4,8 +4,6 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 from tkinter import *
-from tkinter import font
-from tkDocViewer
 from tkPDFViewer import tkPDFViewer as pdf
 
 root = Tk()
@@ -161,8 +159,8 @@ namesL=[]
 namesB=[]
 #_______________pdf_______________________
 v1 = pdf.ShowPdf()
-v2 = v1.pdf_view(pileFrame,pdf_location = r"location", width = 100, height = 100)
-v2.place(x=400,y=10)
+#v2 = v1.pdf_view(pileFrame)
+#v2.place(x=10,y=200)
 # _____________home click____________________
 def homeClick():
     mainFrame.pack(fill="both", expand="yes")
