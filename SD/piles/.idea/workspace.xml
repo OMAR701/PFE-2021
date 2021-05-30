@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="82fad128-e5ca-4fcc-bad9-1dc58b14aebe" name="Default Changelist" comment="" />
+    <list default="true" id="82fad128-e5ca-4fcc-bad9-1dc58b14aebe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../linked list py/pythonProject/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../guiproject/Accueil.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../guiproject/Accueil.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../guiproject/an.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../guiproject/an.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../guiproject/bgA.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../guiproject/bgA.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../guiproject/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../guiproject/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../guiproject/rightImg.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../guiproject/rightImg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../guiproject/sd.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../guiproject/sd.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../guiproject/sdBtnFrame.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../guiproject/sdBtnFrame.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../guiproject/tg.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../guiproject/tg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../guiproject/valider.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../guiproject/valider.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
