@@ -28,7 +28,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../guiproject" />
+=======
+    <property name="last_opened_file_path" value="$USER_HOME$/Bureau/guiproject" />
+>>>>>>> 375e26706ee17c16bb35c7b4f07d08f4841e28c5
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
