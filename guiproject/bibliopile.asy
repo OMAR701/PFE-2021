@@ -2,7 +2,7 @@
 include"edited.asy";
 mystruct t;
 int[] nbrchar;
-t.a=11111112111;t.v=211111211111;t.c=1111121111111;
+t.a=1;t.b=1;t.nom="omar";
 string[][] mystructToMatrice(mystruct s[]){
 	string[][] mat;
 	for(int i=0;i<s.length;++i){
@@ -32,7 +32,7 @@ size(x*0.4cm);
 	line=oneline(mat[i]);
 	label(line,shift(0,i)*(5,0.5));
 	path A1=shift(0,i)*A;
-	draw(A1);
+	draw(A1,2bp*black);
 		
 	}
 	if(color==1){

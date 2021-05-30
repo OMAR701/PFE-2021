@@ -1,4 +1,3 @@
 include'bibliopile.asy';
-settings.outformat="png";
-settings.render=15;
+settings.outformat='png';settings.render=2;
 popList();

@@ -4,8 +4,8 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import os
 from tkinter import *
-from tkPDFViewer import tkPDFViewer
-
+from tkinter import filedialog
+from skimage import io
 
 def writestruct(nbr, names, types):
     filer = open("edited.asy", "r")
@@ -37,6 +37,8 @@ def writestruct(nbr, names, types):
 
 
 def stack(names, types, values):
+    if os.path.exists("draw.png"):
+        os.remove("draw.png")
     filer = open("bibliopile.asy", "r")
     lignes = filer.readlines()
     filer.close()
@@ -54,12 +56,19 @@ def stack(names, types, values):
     filew.writelines(lignes)
     filew.close()
     filew = open("draw.asy", "w")
-    draw = ["include'bibliopile.asy';" + "\n", "pushList();" + "\n"]
+    draw = ["include'bibliopile.asy';" + "\n","settings.outformat='png';settings.render=2;\n", "pushList();" + "\n"]
     filew.writelines(draw)
     filew.close()
-    os.system('"C:/Program Files/asymptote/asy.exe"  -f pdf -noV ' + __file__[:-7] + 'draw.asy')
+    os.system('"C:/Program Files/asymptote/asy.exe" -noV ' + __file__[:-7] + 'draw.asy')
 
-
+def stackpop():
+    if os.path.exists("draw.png"):
+        os.remove("draw.png")
+    draw = ["include'bibliopile.asy';" + "\n","settings.outformat='png';settings.render=2;\n", "popList();" + "\n"]
+    filew = open("draw.asy", "w")
+    filew.writelines(draw)
+    filew.close()
+    os.system('"C:/Program Files/asymptote/asy.exe" -noV ' + __file__[:-7] + 'draw.asy')
 root = Tk()
 root.geometry("1200x605")
 root.configure(bg='black',bd=0)
@@ -102,24 +111,24 @@ def sdClick():
 
 
 def pileClick():
-    pileFrame.pack()
-    fileFrame.pack_forget()
-    llFrame.pack_forget()
-    rightFrame[9].pack_forget()
+    rightFrame[6].place(x=190, y=0)
+    rightFrame[7].place_forget()
+    rightFrame[8].place_forget()
+    rightFrame[9].place_forget()
 
 
 def fileClick():
-    fileFrame.pack()
-    pileFrame.pack_forget()
-    llFrame.pack_forget()
-    rightFrame[9].pack_forget()
+    rightFrame[7].place(x=190, y=0)
+    rightFrame[6].place_forget()
+    rightFrame[8].place_forget()
+    rightFrame[9].place_forget()
 
 
 def llClick():
-    llFrame.pack()
-    pileFrame.pack_forget()
-    fileFrame.pack_forget()
-    rightFrame[9].pack_forget()
+    rightFrame[8].place(x=190, y=0)
+    rightFrame[6].place_forget()
+    rightFrame[7].place_forget()
+    rightFrame[9].place_forget()
 
 
 def clickEnter(event):
@@ -153,13 +162,16 @@ def clickNbrBtn():
                 namesL[i].place(x=500, y=200 + i * 80)
                 namesB.append(Entry(rightFrame[9], font=('Helvetica bold', 15), width=12))
                 namesB[i].place(x=600, y=200 + i * 80)
-            suivantB.place(x=700, y=500)
+            suivantB.place(x=750, y=500)
 
     else:
         errorLabel.configure(text="enter un nombre entier", fg="red")
 
 
 def next():
+    clr = open("testing.txt", "w")
+    clr.writelines("0\n")
+    clr.close()
     for i in range(len(typesL)):
         types.append(str(typesB[i].get()))
         names.append(str(namesB[i].get()))
@@ -168,25 +180,26 @@ def next():
         leftBtn[i + 6].place(x=25, y=150 + i * 75)
     pileClick()
     for i in range(len(names)):
-        pileLabels.append(Label(pileFrame, text=names[i] + " :", bg="#1fa0b8", font=('Arial bold', 15), fg="white"))
+        pileLabels.append(Label(rightFrame[6], text=names[i] + " :", bg="#21222d", font=('Arial bold', 15), fg="white"))
         pileLabels[i].place(x=50, y=100 + i * 60)
-        pileButtons.append(Entry(pileFrame, font=('Helvetica bold', 15), width=12))
+        pileButtons.append(Entry(rightFrame[6], font=('Helvetica bold', 15), width=12))
         pileButtons[i].place(x=220, y=100 + i * 60)
 
 def preClick():
     names.clear()
     types.clear()
+    rightFrame[9].place(x=190, y=0)
     for i in range(len(pileLabels)):
         pileLabels[i].destroy()
         pileButtons[i].destroy()
     pileLabels.clear()
     pileButtons.clear()
-    pileFrame.pack_forget()
-    fileFrame.pack_forget()
-    llFrame.pack_forget()
     for i in range(3):
+        rightFrame[i+6].place_forget()
         leftBtn[i+6].place_forget()
-    rightFrame[9].pack()
+    clr = open("testing.txt", "w")
+    clr.writelines("0\n")
+    clr.close()
 
 def homeClick():
     mainFrame.pack(fill="both", expand="yes")
@@ -210,9 +223,14 @@ sdBtnImg = PhotoImage(file="sdBtnFrame.png")
 accueil = PhotoImage(file="Accueil.png")
 rightImg = PhotoImage(file="rightImg.png")
 valider = PhotoImage(file="valider.png")
+pre = PhotoImage(file="pre.png")
+empl = PhotoImage(file="empiler.png")
+depl = PhotoImage(file="depiler.png")
+down = PhotoImage(file="down.png")
 leftFrame=[]
 home=[]
 rightFrame=[]
+fixedRightFrame=[]
 leftBtn = []
 btn =[]
 for i in range(3):
@@ -223,6 +241,8 @@ for i in range(3):
     leftLabel.place(x=0,y=0)
     home.append(Button(leftFrame[i],activebackground="#cbcbe5",bg="#cbcbe5", image=accueil, bd=0, height=100, width=100, command=homeClick))
     home[i].place(x=50, y=25)
+    fixedRightFrame.append(LabelFrame(btnFrames[i], bg="#cbcbe5", width=1010, height=600, bd=0))
+    fixedRightFrame[len(fixedRightFrame) - 1].place(x=190, y=0)
 for i in range(2):
     rightFrame.append(LabelFrame(btnFrames[0], bg="#cbcbe5", width=1010, height=600, bd=0))
     rightFrame[len(rightFrame)-1].place(x=190, y=0)
@@ -265,7 +285,7 @@ llBtn.place(x=30,y=350)
 # pileLabel = Label(rightFrame,text="Piles :",bg="#1fa0b8",font=('Arial bold',30),fg="white")
 # pileLabel.place(x=460,y=10)
 sdLabel = Label(rightFrame[9], text="création d'une structure de données :", bg="#21222d", font=('Arial bold', 25),fg="white")
-sdLabel.place(x=150, y=10)
+sdLabel.place(x=200, y=20)
 nbrLabel = Label(rightFrame[9], text="le nombre de paramètres :", bg="#21222d", font=('Arial bold', 15), fg="white")
 nbrLabel.place(x=100, y=100)
 
@@ -274,11 +294,10 @@ nbrLabel.place(x=100, y=100)
 nbrSpin = Spinbox(rightFrame[9], from_=1, to=3, font=('Helvetica bold', 15))
 nbrSpin.bind('<Return>', clickEnter)
 nbrSpin.place(x=400, y=100)
-nbrButton = Button(rightFrame[9], image=valider, width=150, height=50, bd=0,bg="#21222d", command=clickNbrBtn)
-nbrButton.place(x=700, y=95)
+nbrButton = Button(rightFrame[9], image=valider, width=150, activebackground="#21222d", height=50, bd=0,bg="#21222d", command=clickNbrBtn)
+nbrButton.place(x=750, y=85)
 nextB = PhotoImage(file="nextB.png")
-suivantB = Button(rightFrame[9], image=nextB, fg="white", bg="#ea8b10", font=('Arial bold', 15), width=145, height=45, bd=0,
-                  command=next)
+suivantB = Button(rightFrame[9], image=nextB, fg="white", bg="#21222d", activebackground="#21222d", font=('Arial bold', 15), width=145, height=45, bd=0,command=next)
 errorLabel = Label(rightFrame[9], text="", font=('Arial bold', 13), bg="#21222d")
 errorLabel.place(x=400, y=140)
 typesL = []
@@ -292,29 +311,42 @@ names = []
 
 # _______________pile frame_________________
 test = PhotoImage(width=0, height=0)
-precedant = Button(pileFrame, bg="red", fg="black", text="precedant", image=test, width=140, height=40, bd=0,
-                   compound="c", command=preClick)
-precedant.place(x=10, y=530)
+precedant = []
+for i in range(3):
+    precedant.append(Button(rightFrame[i+6], bg="#21222d", activebackground="#21222d", fg="black", image=pre, width=150, height=50, bd=0, command=preClick))
+    precedant[i].place(x=100, y=525)
 pileLabels = []
 pileButtons = []
-pileLabel = Label(pileFrame, text="Piles :", bg="#1fa0b8", font=('Arial bold', 30), fg="white")
+pileLabel = Label(rightFrame[6], text="Piles :", bg="#21222d", font=('Arial bold', 30), fg="white")
 pileLabel.place(x=200, y=20)
-v1=[]
-v2=[]
-v1.append(tkPDFViewer.ShowPdf())
-v2.append(v1[len(v1)-1].pdf_view(pileFrame, pdf_location=r"exee.pdf", width=50, height=35))
-v2[len(v2)-1].place(x=500, y=10)
 def empilerClick():
     values = []
     for i in range(len(types)):
         values.append(str(pileButtons[i].get()))
     stack(names, types, values)
-    v1.append(tkPDFViewer.ShowPdf())
-    v2.append(v1[len(v1) - 1].pdf_view(pileFrame, pdf_location=r"draw.pdf", width=50, height=35))
-    v2[len(v2) - 1].place(x=400, y=10)
-empiler = Button(pileFrame, bg="red", fg="black", text="Empiler", image=test, width=140, height=40, bd=0, compound="c",
-                 command=empilerClick)
-empiler.place(x=10, y=400)
+    pileResult.configure(file="draw.png")
+    labelP.configure(image=pileResult)
+
+def depilerClick():
+    stackpop()
+    pileResult.configure(file="draw.png")
+    labelP.configure(image=pileResult)
+def file_save():
+    img=io.imread("draw.png")
+    fpath=filedialog.asksaveasfilename(defaultextension=".png")
+    io.imsave(str(fpath),img)
+
+pileResult = PhotoImage()
+empiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=empl, width=150, height=50, bd=0, compound="c",command=empilerClick)
+empiler.place(x=100, y=300)
+depiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=depl, width=150, height=50, bd=0, compound="c",command=depilerClick)
+depiler.place(x=300, y=300)
+showFrame = LabelFrame(rightFrame[6],bg="white",width=480, height=480,bd=0)
+showFrame.place(x=500,y=500,anchor=SW)
+downShow = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=down, width=200, height=70, bd=0, compound="c",command=file_save)
+downShow.place(x=640, y=515)
+labelP = Label(showFrame,image=pileResult)
+labelP.pack(side=BOTTOM)
 # _______________pdf_______________________
 
 # _____________home click____________________
