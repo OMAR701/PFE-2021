@@ -4,14 +4,11 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import os
 #import subprocess
-import subprocess
+#import subprocess
 import time
 #from multiprocessing import Process
-from multiprocessing import Process
+#from multiprocessing import Process
 from tkinter import *
-<<<<<<< HEAD
-from tkPDFViewer import tkPDFViewer as pdf
-=======
 from tkinter import filedialog
 from skimage import io
 from subprocess import Popen
@@ -43,7 +40,6 @@ def writestruct(nbr, names, types):
     filew = open("edited.asy", "w")
     filew.writelines(lignes)
     filew.close()
->>>>>>> 4dcb8280217de106a6f71a075638ec22d901ce8d
 
 
 def stack(names, types, values):
@@ -202,28 +198,6 @@ def clickNbrBtn():
 
     else:
         errorLabel.configure(text="enter un nombre entier", fg="red")
-<<<<<<< HEAD
-nbrSpin = Spinbox(pileFrame, from_=1,to=3,font=('Helvetica bold',15))
-nbrSpin.bind('<Return>',clickEnter)
-nbrSpin.place(x=400,y=100)
-validerB = PhotoImage(file="valider.png")
-nbrButton = Button(pileFrame,image=validerB,width=145,height=45,bd=0,command=clickNbrBtn)
-nbrButton.place(x=700,y=95)
-nextB = PhotoImage(file="nextB.png")
-suivantB = Button(pileFrame,image=nextB,fg="white",bg="#ea8b10",font=('Arial bold',15),width=145,height=45,bd=0,command=clickNbrBtn)
-suivantB.place(x=700,y=500)
-errorLabel = Label(pileFrame,text="",font=('Arial bold',13),bg="#1fa0b8")
-errorLabel.place(x=400,y=140)
-typesL=[]
-typesB=[]
-namesL=[]
-namesB=[]
-#_______________pdf_______________________
-v1 = pdf.ShowPdf()
-#v2 = v1.pdf_view(pileFrame)
-#v2.place(x=10,y=200)
-# _____________home click____________________
-=======
 
 
 def next():
@@ -259,7 +233,6 @@ def preClick():
     clr.writelines("0\n")
     clr.close()
 
->>>>>>> 4dcb8280217de106a6f71a075638ec22d901ce8d
 def homeClick():
     mainFrame.pack(fill="both", expand="yes")
     btnFrames[0].pack_forget()
