@@ -1,33 +1,33 @@
-int nbr=2;
-string[] names={"a","b"};
+int nbr=1;
+string[] names={"df"};
 struct mystruct{
-int  a;int  b;
+int  df;
 }
 void fileWrite(mystruct[] m){
 	file f=output("testing.txt");
-int[]a;int[]b;
+int[]df;
 	for(int i=0;i<m.length;++i){
-a[i]=m[i].a;b[i]=m[i].b;
+df[i]=m[i].df;
 	}
 	int[] length={m.length};
 	write(f,length);write(f);
-write(f,a);write(f,b);
+write(f,df);
 }
 mystruct[] fileRead(){
 	file f=input("testing.txt");
 	int dim=f.dimension(1);
 	mystruct[] m;
-int[]a;int[]b;
-for(int i=0;i<dim;++i){a[i]=f.line();}for(int i=0;i<dim;++i){b[i]=f.line();}
+int[]df;
+for(int i=0;i<dim;++i){df[i]=f.line();}
 	for(int i=0;i<dim;++i){
 		mystruct t;
-t.a=a[i];t.b=b[i];
+t.df=df[i];
 		m.push(t);
 	}
 	return m;
 }
 string[] mystructTostring(mystruct s){
 	string[] t;
-t[0]=(string)s.a;t[1]=(string)s.b;
+t[0]=(string)s.df;
 	return t;
 }
