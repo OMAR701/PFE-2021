@@ -8,6 +8,7 @@ from tkinter import *
 from tkinter import filedialog
 from skimage import io
 
+
 def writestruct(nbr, names, types):
     filer = open("edited.asy", "r")
     lignes = filer.readlines()
@@ -38,8 +39,8 @@ def writestruct(nbr, names, types):
 
 
 def stack(names, types, values):
-    #if os.path.exists("draw.png"):
-     #   os.remove("draw.png")
+    if os.path.exists("draw.png"):
+        os.remove("draw.png")
     filer = open("bibliopile.asy", "r")
     lignes = filer.readlines()
     filer.close()
@@ -57,23 +58,27 @@ def stack(names, types, values):
     filew.writelines(lignes)
     filew.close()
     filew = open("draw.asy", "w")
-    draw = ["include'bibliopile.asy';" + "\n","settings.outformat='png';settings.render=2;\n", "pushList();" + "\n"]
+    draw = ["include'bibliopile.asy';" + "\n", "settings.outformat='png';settings.render=2;\n", "pushList();" + "\n"]
     filew.writelines(draw)
     filew.close()
-    os.popen('asy -noV draw.asy')
+    os.popen('"C:/Program Files/Asymptote/asy.exe" -noV  draw.asy')
+
+
 def stackpop():
-    draw = ["include'bibliopile.asy';" + "\n","settings.outformat='png';settings.render=2;\n", "popList();" + "\n"]
+    draw = ["include'bibliopile.asy';" + "\n", "settings.outformat='png';settings.render=2;\n", "popList();" + "\n"]
     filew = open("draw.asy", "w")
     filew.writelines(draw)
     filew.close()
-    os.system('asy -noV ' + __file__[:-7] + 'draw.asy')
+    os.popen('"C:/Program Files/Asymptote/asy.exe" -noV draw.asy')
+
+
 root = Tk()
 root.geometry("1200x605")
-root.configure(bg='black',bd=0)
+root.configure(bg='black', bd=0)
 root.minsize(1200, 605)
 root.maxsize(1200, 605)
 global n
-mainFrame = LabelFrame(root,bd=0)
+mainFrame = LabelFrame(root, bd=0)
 mainFrame.pack(fill="both", expand="yes")
 btnFrames = []
 
@@ -93,6 +98,7 @@ def tgClick():
     btnFrames[2].pack_forget()
     btnFrames[1].pack_forget()
     btnFrames[0].pack(fill="both", expand="yes")
+
 
 def anClick():
     mainFrame.pack_forget()
@@ -167,8 +173,6 @@ def clickNbrBtn():
 
 
 def next():
-    if os.path.exists("draw.png"):
-        os.remove("draw.png")
     clr = open("testing.txt", "w")
     clr.writelines("0\n")
     clr.close()
@@ -185,6 +189,7 @@ def next():
         pileButtons.append(Entry(rightFrame[6], font=('Helvetica bold', 15), width=12))
         pileButtons[i].place(x=220, y=100 + i * 60)
 
+
 def preClick():
     names.clear()
     types.clear()
@@ -195,17 +200,19 @@ def preClick():
     pileLabels.clear()
     pileButtons.clear()
     for i in range(3):
-        rightFrame[i+6].place_forget()
-        leftBtn[i+6].place_forget()
+        rightFrame[i + 6].place_forget()
+        leftBtn[i + 6].place_forget()
     clr = open("testing.txt", "w")
     clr.writelines("0\n")
     clr.close()
+
 
 def homeClick():
     mainFrame.pack(fill="both", expand="yes")
     btnFrames[0].pack_forget()
     btnFrames[2].pack_forget()
     btnFrames[1].pack_forget()
+
 
 tg = Button(mainFrame, image=tgImg, bg="#cbcbe5", activebackground="#cbcbe5", borderwidth=0, height=195, width=195,
             compound="c", command=tgClick)
@@ -227,62 +234,69 @@ pre = PhotoImage(file="pre.png")
 empl = PhotoImage(file="empiler.png")
 depl = PhotoImage(file="depiler.png")
 down = PhotoImage(file="down.png")
-loadgift = [PhotoImage(file="loadgif.gif",format=f"gif -index {i}") for i in range(8)]
+loadgift = [PhotoImage(file="loadgif.gif", format=f"gif -index {i}") for i in range(8)]
+loading = []
+for i in range(10):
+    loading.append(PhotoImage(file="loading" + str(i) + ".png"))
 count = 0
 anim = None
 
-leftFrame=[]
-home=[]
-rightFrame=[]
-fixedRightFrame=[]
+leftFrame = []
+home = []
+rightFrame = []
+fixedRightFrame = []
 leftBtn = []
-btn =[]
+btn = []
 for i in range(3):
     btnFrames.append(LabelFrame(root))
-    leftFrame.append(LabelFrame(btnFrames[i], width=300, height=600, bd=0,bg="#cbcbe5"))
+    leftFrame.append(LabelFrame(btnFrames[i], width=300, height=600, bd=0, bg="#cbcbe5"))
     leftFrame[i].place(x=0, y=0)
-    leftLabel = Label(leftFrame[i], image=sdBtnImg,bg="#cbcbe5",bd=0)
-    leftLabel.place(x=0,y=0)
-    home.append(Button(leftFrame[i],activebackground="#cbcbe5",bg="#cbcbe5", image=accueil, bd=0, height=100, width=100, command=homeClick))
+    leftLabel = Label(leftFrame[i], image=sdBtnImg, bg="#cbcbe5", bd=0)
+    leftLabel.place(x=0, y=0)
+    home.append(
+        Button(leftFrame[i], activebackground="#cbcbe5", bg="#cbcbe5", image=accueil, bd=0, height=100, width=100,
+               command=homeClick))
     home[i].place(x=50, y=25)
     fixedRightFrame.append(LabelFrame(btnFrames[i], bg="#cbcbe5", width=1010, height=600, bd=0))
     fixedRightFrame[len(fixedRightFrame) - 1].place(x=190, y=0)
 for i in range(2):
     rightFrame.append(LabelFrame(btnFrames[0], bg="#cbcbe5", width=1010, height=600, bd=0))
-    rightFrame[len(rightFrame)-1].place(x=190, y=0)
-    sdRbg = Label(rightFrame[len(rightFrame)-1], image=rightImg, bg="#cbcbe5")
+    rightFrame[len(rightFrame) - 1].place(x=190, y=0)
+    sdRbg = Label(rightFrame[len(rightFrame) - 1], image=rightImg, bg="#cbcbe5")
     sdRbg.pack()
-    btn.append(PhotoImage(file="btn"+str(i)+".png"))
-    leftBtn.append(Button(btnFrames[0],image=btn[i],bg="#cbcbe5",activebackground="#cbcbe5",width=150,height=50,bd=0))
-    leftBtn[i].place(x=25,y=200+i*75)
+    btn.append(PhotoImage(file="btn" + str(i) + ".png"))
+    leftBtn.append(
+        Button(btnFrames[0], image=btn[i], bg="#cbcbe5", activebackground="#cbcbe5", width=150, height=50, bd=0))
+    leftBtn[i].place(x=25, y=200 + i * 75)
 for i in range(4):
     rightFrame.append(LabelFrame(btnFrames[1], bg="#cbcbe5", width=1010, height=600, bd=0))
-    rightFrame[len(rightFrame)-1].place(x=190, y=0)
-    sdRbg = Label(rightFrame[len(rightFrame)-1], image=rightImg, bg="#cbcbe5")
+    rightFrame[len(rightFrame) - 1].place(x=190, y=0)
+    sdRbg = Label(rightFrame[len(rightFrame) - 1], image=rightImg, bg="#cbcbe5")
     sdRbg.pack()
-    btn.append(PhotoImage(file="btn" + str(i+2) + ".png"))
-    leftBtn.append(Button(btnFrames[1], image=btn[i+2], bg="#cbcbe5",activebackground="#cbcbe5", width=150, height=50, bd=0))
-    leftBtn[i+2].place(x=25, y=125 + i * 75)
+    btn.append(PhotoImage(file="btn" + str(i + 2) + ".png"))
+    leftBtn.append(
+        Button(btnFrames[1], image=btn[i + 2], bg="#cbcbe5", activebackground="#cbcbe5", width=150, height=50, bd=0))
+    leftBtn[i + 2].place(x=25, y=125 + i * 75)
 for i in range(3):
     rightFrame.append(LabelFrame(btnFrames[2], bg="#cbcbe5", width=1010, height=600, bd=0))
-    rightFrame[len(rightFrame)-1].place(x=190, y=0)
-    sdRbg = Label(rightFrame[len(rightFrame)-1], image=rightImg, bg="#cbcbe5")
+    rightFrame[len(rightFrame) - 1].place(x=190, y=0)
+    sdRbg = Label(rightFrame[len(rightFrame) - 1], image=rightImg, bg="#cbcbe5")
     sdRbg.pack()
-    btn.append(PhotoImage(file="btn"+str(i+6)+".png"))
-    leftBtn.append(Button(btnFrames[2], image=btn[i+6], bg="#cbcbe5", activebackground="#cbcbe5", width=150, height=50, bd=0))
+    btn.append(PhotoImage(file="btn" + str(i + 6) + ".png"))
+    leftBtn.append(
+        Button(btnFrames[2], image=btn[i + 6], bg="#cbcbe5", activebackground="#cbcbe5", width=150, height=50, bd=0))
 leftBtn[6].configure(command=pileClick)
 leftBtn[7].configure(command=fileClick)
 leftBtn[8].configure(command=llClick)
 rightFrame.append(LabelFrame(btnFrames[2], bg="#cbcbe5", width=1010, height=600, bd=0))
-rightFrame[len(rightFrame)-1].place(x=190, y=0)
-sdRbg = Label(rightFrame[len(rightFrame)-1], image=rightImg, bg="#cbcbe5")
+rightFrame[len(rightFrame) - 1].place(x=190, y=0)
+sdRbg = Label(rightFrame[len(rightFrame) - 1], image=rightImg, bg="#cbcbe5")
 sdRbg.pack()
-   #leftBtn[i + 6].place(x=25, y=150 + i * 75)
+# leftBtn[i + 6].place(x=25, y=150 + i * 75)
 
 pileFrame = LabelFrame(btnFrames[2], bg="#1fa0b8", width=1000, height=600, bd=0)
 fileFrame = LabelFrame(btnFrames[2], bg="#1fa0b8", width=1000, height=600, bd=0)
 llFrame = LabelFrame(btnFrames[2], bg="#1fa0b8", width=1000, height=600, bd=0)
-
 
 """
 pileBtn.place(x=30,y=150)
@@ -291,20 +305,21 @@ llBtn.place(x=30,y=350)
 """
 # pileLabel = Label(rightFrame,text="Piles :",bg="#1fa0b8",font=('Arial bold',30),fg="white")
 # pileLabel.place(x=460,y=10)
-sdLabel = Label(rightFrame[9], text="création d'une structure de données :", bg="#21222d", font=('Arial bold', 25),fg="white")
+sdLabel = Label(rightFrame[9], text="création d'une structure de données :", bg="#21222d", font=('Arial bold', 25),
+                fg="white")
 sdLabel.place(x=200, y=20)
 nbrLabel = Label(rightFrame[9], text="le nombre de paramètres :", bg="#21222d", font=('Arial bold', 15), fg="white")
 nbrLabel.place(x=100, y=100)
 
-
-
 nbrSpin = Spinbox(rightFrame[9], from_=1, to=3, font=('Helvetica bold', 15))
 nbrSpin.bind('<Return>', clickEnter)
 nbrSpin.place(x=400, y=100)
-nbrButton = Button(rightFrame[9], image=valider, width=150, activebackground="#21222d", height=50, bd=0,bg="#21222d", command=clickNbrBtn)
+nbrButton = Button(rightFrame[9], image=valider, width=150, activebackground="#21222d", height=50, bd=0, bg="#21222d",
+                   command=clickNbrBtn)
 nbrButton.place(x=750, y=85)
 nextB = PhotoImage(file="nextB.png")
-suivantB = Button(rightFrame[9], image=nextB, fg="white", bg="#21222d", activebackground="#21222d", font=('Arial bold', 15), width=145, height=45, bd=0,command=next)
+suivantB = Button(rightFrame[9], image=nextB, fg="white", bg="#21222d", activebackground="#21222d",
+                  font=('Arial bold', 15), width=145, height=45, bd=0, command=next)
 errorLabel = Label(rightFrame[9], text="", font=('Arial bold', 13), bg="#21222d")
 errorLabel.place(x=400, y=140)
 typesL = []
@@ -314,53 +329,104 @@ namesB = []
 types = []
 names = []
 
-
-
 # _______________pile frame_________________
 test = PhotoImage(width=0, height=0)
 precedant = []
 for i in range(3):
-    precedant.append(Button(rightFrame[i+6], bg="#21222d", activebackground="#21222d", fg="black", image=pre, width=150, height=50, bd=0, command=preClick))
+    precedant.append(
+        Button(rightFrame[i + 6], bg="#21222d", activebackground="#21222d", fg="black", image=pre, width=150, height=50,
+               bd=0, command=preClick))
     precedant[i].place(x=100, y=525)
 pileLabels = []
 pileButtons = []
 pileLabel = Label(rightFrame[6], text="Piles :", bg="#21222d", font=('Arial bold', 30), fg="white")
 pileLabel.place(x=200, y=20)
+
+
+def loadingf():
+    loadingFrm[0].place(x=100, y=430)
+
+def loadingf1():
+    loadingFrm[2].place(x=100, y=430)
+
+def loadingf2():
+    loadingFrm[4].place(x=100, y=430)
+
+def loadingf3():
+    loadingFrm[6].place(x=100, y=430)
+
+def loadingf4():
+    loadingFrm[8].place(x=100, y=430)
+
+
+def testing():
+    loadingFrm[9].place(x=100, y=430)
+    for i in range(10):
+        loadingFrm[i].place_forget()
+    pileResult.configure(file="draw.png")
+    labelP.configure(image=pileResult)
+    labelP.pack(side=BOTTOM)
+
 def empilerClick():
     values = []
     for i in range(len(types)):
         values.append(str(pileButtons[i].get()))
     stack(names, types, values)
-    time.sleep(0.5)
-    pileResult.configure(file="draw.png")
-    labelP.configure(image=pileResult)
+    u = 5000
+    ul = []
+    for i in range(5):
+        ul.append(int((u/5)*(i+1)))
+    root.after(0 , loadingf)
+    root.after(ul[0], loadingf1)
+    root.after(ul[1], loadingf2)
+    root.after(ul[2], loadingf3)
+    root.after(ul[3], loadingf4)
+    root.after(ul[4], testing)
+
+
 def depilerClick():
     stackpop()
-    time.sleep(0.5)
-    pileResult.configure(file="draw.png")
-    labelP.configure(image=pileResult)
+    # time.sleep(0.5)
+    u = 5000
+    ul = []
+    for i in range(5):
+        ul.append(int((u / 5) * (i + 1)))
+    root.after(0, loadingf)
+    root.after(ul[0], loadingf1)
+    root.after(ul[1], loadingf2)
+    root.after(ul[2], loadingf3)
+    root.after(ul[3], loadingf4)
+    root.after(ul[4], testing)
+
+
 def file_save():
-    img=io.imread("draw.png")
-    fpath=filedialog.asksaveasfilename(defaultextension=".png")
-    io.imsave(str(fpath),img)
+    img = io.imread("draw.png")
+    fpath = filedialog.asksaveasfilename(defaultextension=".png")
+    io.imsave(str(fpath), img)
+
 
 pileResult = PhotoImage()
-empiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=empl, width=150, height=50, bd=0, compound="c",command=empilerClick)
+empiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=empl, width=150, height=50,
+                 bd=0, command=empilerClick)
 empiler.place(x=100, y=300)
-depiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=depl, width=150, height=50, bd=0, compound="c",command=depilerClick)
+depiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=depl, width=150, height=50,
+                 bd=0, compound="c", command=depilerClick)
 depiler.place(x=300, y=300)
-showFrame = LabelFrame(rightFrame[6],bg="white",width=480, height=480,bd=0)
-showFrame.place(x=500,y=500,anchor=SW)
-downShow = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=down, width=200, height=70, bd=0, compound="c",command=file_save)
+showFrame = LabelFrame(rightFrame[6], bg="white", width=480, height=480, bd=0)
+showFrame.place(x=500, y=500, anchor=SW)
+downShow = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=down, width=200, height=70,
+                  bd=0, compound="c", command=file_save)
 downShow.place(x=640, y=515)
-labelP = Label(showFrame,image=pileResult)
-labelGif = Label(rightFrame[6],image=loadgif)
-labelP.pack(side=BOTTOM)
+labelP = Label(showFrame, image=pileResult)
+labelGif = Label(rightFrame[6], image=loadgif)
+labelTest = []
+loadingFrm = []
+for i in range(10):
+    loadingFrm.append(Label(rightFrame[6], image=loading[i], bg="black"))
+# labelP.pack(side=BOTTOM)
 # _______________pdf_______________________
 
 # _____________home click____________________
-
-
 
 
 # ______________________________________________
