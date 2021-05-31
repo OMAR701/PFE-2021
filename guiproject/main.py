@@ -94,7 +94,6 @@ def tgClick():
     btnFrames[1].pack_forget()
     btnFrames[0].pack(fill="both", expand="yes")
 
-
 def anClick():
     mainFrame.pack_forget()
     btnFrames[2].pack_forget()
