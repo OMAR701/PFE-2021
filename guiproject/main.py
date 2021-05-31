@@ -66,14 +66,14 @@ def stack(names, types, values):
     filew.writelines(draw)
     filew.close()
     drawP = __file__[:-7] +"draw.asy"
-    asy = '"C:/"Program Files"/asymptote/asy.exe"'
+    asy = 'C:/"Program Files"/asymptote/asy'
     pyyy = 'c:/"program files"/python39/python.exe'
     #def run_batfile():
         #subprocess.call(['"C:/Program Files/asymptote/asy.exe"','-noV',__file__[:-7] + "draw.asy"])
-    subprocess.Popen([pyyy,"test.py"])
+    Popen('"C:/Program Files/asymptote/asy.exe" -noV '+__file__[:-7] + "draw.asy",shell=False,start_new_session=True)
     #subprocess.run('"C:/Program Files/asymptote/asy.exe" -noV '+__file__[:-7] + "draw.asy")
     #Process(target=run_batfile).start()
-    #os.spawnl(os.P_NOWAIT,'C:/Program Files/asymptote/asy.exe',*["-noV ","draw.asy"])
+    #os.popen('C:/"Program Files"/asymptote/asy -noV draw.asy')
     max = 1
     start = time.time()
     while True:
