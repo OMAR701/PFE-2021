@@ -3,15 +3,10 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import os
-#import subprocess
-#import subprocess
 import time
-#from multiprocessing import Process
-#from multiprocessing import Process
 from tkinter import *
 from tkinter import filedialog
 from skimage import io
-from subprocess import Popen
 
 def writestruct(nbr, names, types):
     filer = open("edited.asy", "r")
@@ -43,8 +38,8 @@ def writestruct(nbr, names, types):
 
 
 def stack(names, types, values):
-    if os.path.exists("draw.png"):
-        os.remove("draw.png")
+    #if os.path.exists("draw.png"):
+     #   os.remove("draw.png")
     filer = open("bibliopile.asy", "r")
     lignes = filer.readlines()
     filer.close()
@@ -65,41 +60,13 @@ def stack(names, types, values):
     draw = ["include'bibliopile.asy';" + "\n","settings.outformat='png';settings.render=2;\n", "pushList();" + "\n"]
     filew.writelines(draw)
     filew.close()
-    drawP = __file__[:-7] +"draw.asy"
-    asy = 'C:/"Program Files"/asymptote/asy'
-    pyyy = 'c:/"program files"/python39/python.exe'
-    #def run_batfile():
-        #subprocess.call(['"C:/Program Files/asymptote/asy.exe"','-noV',__file__[:-7] + "draw.asy"])
-    Popen('"C:/Program Files/asymptote/asy.exe" -noV '+__file__[:-7] + "draw.asy",shell=False,start_new_session=True)
-    #subprocess.run('"C:/Program Files/asymptote/asy.exe" -noV '+__file__[:-7] + "draw.asy")
-    #Process(target=run_batfile).start()
-    #os.popen('C:/"Program Files"/asymptote/asy -noV draw.asy')
-    max = 1
-    start = time.time()
-    while True:
-        ### Do other stuff, it won't be blocked
-        time.sleep(0.1)
-        ### This will be updated every loop
-        #remaining = max + start - time.time()
-        ### Countdown finished, ending loop
-        if os.path.exists("draw.png"):
-            break
-    while True:
-        ### Do other stuff, it won't be blocked
-        time.sleep(0.1)
-        ### This will be updated every loop
-        remaining = max + start - time.time()
-        ### Countdown finished, ending loop
-        if remaining <=0:
-            break
+    os.popen('asy -noV draw.asy')
 def stackpop():
-    if os.path.exists("draw.png"):
-        os.remove("draw.png")
     draw = ["include'bibliopile.asy';" + "\n","settings.outformat='png';settings.render=2;\n", "popList();" + "\n"]
     filew = open("draw.asy", "w")
     filew.writelines(draw)
     filew.close()
-    os.system('"C:/Program Files/asymptote/asy.exe" -noV ' + __file__[:-7] + 'draw.asy')
+    os.system('asy -noV ' + __file__[:-7] + 'draw.asy')
 root = Tk()
 root.geometry("1200x605")
 root.configure(bg='black',bd=0)
@@ -201,6 +168,8 @@ def clickNbrBtn():
 
 
 def next():
+    if os.path.exists("draw.png"):
+        os.remove("draw.png")
     clr = open("testing.txt", "w")
     clr.writelines("0\n")
     clr.close()
@@ -262,15 +231,7 @@ down = PhotoImage(file="down.png")
 loadgift = [PhotoImage(file="loadgif.gif",format=f"gif -index {i}") for i in range(8)]
 count = 0
 anim = None
-def animation(count):
-    global anim
-    im2 = loadgift[count]
 
-    labelGif.configure(image=im2)
-    count += 1
-    if count == 8:
-        count = 0
-    anim = rightFrame[6].after(50,lambda :animation(count))
 leftFrame=[]
 home=[]
 rightFrame=[]
@@ -366,18 +327,17 @@ pileLabels = []
 pileButtons = []
 pileLabel = Label(rightFrame[6], text="Piles :", bg="#21222d", font=('Arial bold', 30), fg="white")
 pileLabel.place(x=200, y=20)
-def empilerClick(count):
-    labelGif.place(x=100, y=450)
-    animation(count)
+def empilerClick():
     values = []
     for i in range(len(types)):
         values.append(str(pileButtons[i].get()))
     stack(names, types, values)
+    time.sleep(0.5)
     pileResult.configure(file="draw.png")
     labelP.configure(image=pileResult)
-   #labelGif.place_forget()
 def depilerClick():
     stackpop()
+    time.sleep(0.5)
     pileResult.configure(file="draw.png")
     labelP.configure(image=pileResult)
 def file_save():
@@ -386,7 +346,7 @@ def file_save():
     io.imsave(str(fpath),img)
 
 pileResult = PhotoImage()
-empiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=empl, width=150, height=50, bd=0, compound="c",command=lambda :empilerClick(count))
+empiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=empl, width=150, height=50, bd=0, compound="c",command=empilerClick)
 empiler.place(x=100, y=300)
 depiler = Button(rightFrame[6], bg="#21222d", fg="black", activebackground="#21222d", image=depl, width=150, height=50, bd=0, compound="c",command=depilerClick)
 depiler.place(x=300, y=300)
