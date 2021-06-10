@@ -1,2 +1,0 @@
-include'bibliopile.asy';
-popList();

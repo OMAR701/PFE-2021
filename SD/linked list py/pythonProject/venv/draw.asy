@@ -1,2 +1,0 @@
-include'biblio.asy';
-pushList();

@@ -1,3 +1,0 @@
-binarytree st=searchtree(
-
-);
